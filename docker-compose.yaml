@@ -2,7 +2,7 @@ version: '3.5'
 services: 
   elastalert:
     container_name: elastalert
-    image: elastalert:latest
+    image: elastalert:0.2.1
     volumes: 
     - ./opt/config:/opt/config:ro
     - ./opt/rules:/opt/rules:ro

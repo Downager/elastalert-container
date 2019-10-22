@@ -24,7 +24,7 @@ spec:
           mountPath: /opt/config/elastalert_config.yaml
           subPath: elastalert_config.yaml
         - name: config-volume
-          mountPath: /opt/rule/elastalert_alert.yaml
+          mountPath: /opt/rules/elastalert_alert.yaml
           subPath: elastalert_alert.yaml
         resources:
           requests:
@@ -37,3 +37,8 @@ spec:
       - name: config-volume
         configMap:
           name: elast-config
+          items:
+            - key: elastalert_config.yaml
+              path: elastalert_config.yaml
+            - key: elastalert_alert.yaml
+              path: elastalert_alert.yaml

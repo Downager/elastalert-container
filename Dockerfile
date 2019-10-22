@@ -27,4 +27,4 @@ VOLUME [ "/opt/config", "/opt/rules" ]
 
 WORKDIR /opt/elastalert
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/opt/elastalert/docker-entrypoint.sh"]
