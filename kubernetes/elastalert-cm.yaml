@@ -74,12 +74,12 @@ data:
     alert_time_limit:
       days: 1
   elastalert_alert.yaml: |-
-    name: CMS Error Test
+    name: CMS Error
     type: frequency
     index: k8s-*
     num_events: 1
     timeframe:
-        hours: 1
+        minutes: 15
     filter:
     - query:
         wildcard:
@@ -89,5 +89,3 @@ data:
     slack:
     # monitor_cms_dev
     slack_webhook_url: "https://hooks.slack.com/services/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"
-    slack_color: warning
-    slack_name: CMS ElastAlert
