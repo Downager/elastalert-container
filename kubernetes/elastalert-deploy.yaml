@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  labels:
+    name: elastalert
+  name: elastalert
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: elastalert
+  template:
+    metadata:
+      labels:
+        app: elastalert
+    spec:
+      containers:
+      - name: elastalert
+        image: registry-intl.cn-hongkong.aliyuncs.com/cms-php-nginx/elastalert:0.2.1
+        command: ["/bin/sh", "-c", "/opt/elastalert/docker-entrypoint.sh"]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/config/elastalert_config.yaml
+          subPath: elastalert_config.yaml
+        - name: config-volume
+          mountPath: /opt/rule/elastalert_alert.yaml
+          subPath: elastalert_alert.yaml
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 300m
+            memory: 500Mi
+      volumes:
+      - name: config-volume
+        configMap:
+          name: elast-config
